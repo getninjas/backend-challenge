@@ -1,0 +1,121 @@
+= Formulário dinâmicos
+
+== Descrição
+
+No site GetNinjas temos um formulário de orçamento específico para cada uma das
+subcategorias existentes no site.
+
+Alguns exemplos podem ser vistos em:
+
+http://www.getninjas.com.br/reformas-e-reparos/pedreiro/
+http://www.getninjas.com.br/eventos-e-festas/recepcionistas-garcons-e-bartenders/
+http://www.getninjas.com.br/para-o-lar-e-animais-de-estimacao/acompanhante-de-idosos/
+http://www.getninjas.com.br/tecnologia-e-internet/manutencao-de-computadores/
+
+O objetivo deste exercício é criar uma aplicação Rails bastante simples, com
+uma interface administrativa que permita criar / editar formulários para cada
+uma das subcategorias existentes.
+
+== Ambiente e dados fornecidos
+
+Disponibilizamos um repositório git local com o esqueleto de uma aplicação RoR.
+Nela você encontrará modelos ActiveRecord para Category e SubCategory, e seed
+data para 2 categorias e 4 subcategorias.
+
+Além disso, os formulários precisam ser baseados na estrutura definida abaixo:
+
+  {
+    sub_category_id: 1,
+    fields: [
+      {
+        order: 2,
+        title: "Second Field",
+        type: "checkbox",
+        values: ["Foo", "Bar", "Baz"]
+      },
+      {
+        order: 1,
+        title: "First Field",
+        type: "select",
+        values: ["Foo", "Bar", "Baz"]
+      },
+      {
+        order: 4,
+        title: "Fourth Field",
+        type: "text"
+      },
+      {
+        order: 3,
+        title: "Third Field",
+        type: "textarea"
+      }
+    ]
+  }
+
+
+== Objetivos
+
+A aplicação deve fornecer uma interface simples de Administração, onde será
+permitido:
+  - adicionar / remover campos em cada um dos formulários
+  - definir um título para cada campo
+  - definir o tipo de cada campo (checkbox ou text)
+  - definir a ordem de cada campo (essa ordem deve ser respeitada na renderização do formulário)
+  - Caso o campo seja do tipo checkbox, deve ser possível adicionar / remover possíveis valores (*)
+
+(*) Nos formulários do GetNinjas.com.br, os campos do tipo "checkbox", possuem o valor "Outro". Neste exercício, ele não precisa ser implementado
+
+A aplicação também deve ser capaz de "renderizar" estes formulários que foram
+criados pela interface administrativa ao se acessar a rota:
+
+  /:slug_categoria/:slug_subcategoria/
+
+A solução como um todo deve ser genérica e robusta o suficiente para lidar com
+mais de 100 formulários distintos.
+
+=== Restrições
+
+Você pode utilizar qualquer banco de dados que achar necessário, mas não é
+permitido a utilização de gem / plugin para gerar o HTML dos formulários.
+Utilize apenas os helpers padrões do Rails.
+
+=== O que NÃO é objetivo desse exercício
+
+Este teste foi pensado como algo simples para exercitar os skills de
+desenvolvimento backend dos candidatos. Portanto, não é preciso se preocupar
+com:
+  - Layout das páginas (formulários e admin)
+  - Autenticação da área administrativa
+  - Testes para a área administrativa
+  - Persistência dos dados preenchidos nos formulários
+
+
+== Code Review
+
+Assim que recebermos seu código faremos um code review dele, seguindo o mesmo
+processo utilizado no nosso dia-a-dia no GetNinjas.
+
+Analisaremos várias coisas em sua entrega, incluindo o design da solução, a
+higiene e clareza do código (quão fácil é para outro desenvolvedor entender o
+que foi feito?), e, principalmente, a utilização de boas práticas de
+desenvolvimento e suas habilidades com programação orientada a objetos.
+
+Entre os pontos analisados, destacamos:
+  - O código enviado pode ser executado sem necessidade de ajustes e sem erros
+  - Clareza, organização e padrão na entrega (código, commits, comentários, etc)
+  - Arquitetura da solução, utilização de design patterns adequados e orientação a objetos
+  - Desenvolvimento da solução seguindo práticas como TDD e BDD.
+  - Cobertura de testes (unitário e de integração) para a geração dos formulários dinâmicos
+
+
+== Resultado
+
+Iniciaremos o code review tão logo tenhamos acesso ao código do exercício, e
+geralmente levamos um ou dois dias para finalizá-lo.
+
+O resultado deste code review mais as etapas anteriores de entrevista definirão
+se continuaremos em frente com o processo de seleção. Em todos os casos nós
+entramos em contato com os candidatos para dar um feedback (via email ou
+telefone).
+
+Portanto, esperamos que dê o seu melhor nesse exercício :-)
